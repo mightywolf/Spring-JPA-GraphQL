@@ -1,0 +1,48 @@
+type Query{
+	firstQuery : String
+	fullName(req : SampleRequest) : String
+	student(id : Long) : Student
+}
+
+input SampleRequest{
+	firstName : String!
+	lastName : String
+}
+
+type Student {
+    firstName : String
+    lastName  : String
+    age : String
+    email : String
+    fullName : String
+    laptop : Laptop
+    subjectList(nameFilter : SubjectNameFilter) : [Subject]
+}
+
+type Laptop{
+    laptopId : Long
+    modelNumber: String
+    brand : String
+    student : Student
+}
+
+type StudentResponse {
+    id : String
+    firstName : String
+    lastName  : String
+    age : String
+    email : String
+    fullName : String
+}
+
+type Subject {
+    id : Long
+    subjectName : String
+    student : Student
+}
+
+enum SubjectNameFilter {
+    JAVA,
+    PYTHON,
+    RUBY
+}
